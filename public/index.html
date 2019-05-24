@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Video</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  </head>
+  <body>
+    <!-- Add your site or application content here -->
+    <canvas id="canvas1" width="500" height="400"></canvas>
+    <canvas id="canvas2" width="500" height="400"></canvas>
+
+    <canvas width="500" height="400"></canvas>
+    <div>
+      <button id="btn-play-pause" > Pause </button>
+      <input id="volume-range" type="range" min="0" max="100" step="1" />
+    </div>
+    <video style="display: none" id="videocat" src="videocat.mp4" ></video>
+    <video style="display: none" id="videodog" src="videodog.mp4" ></video>
+    <script src="bundle.js"></script>
+    <script>
+      const btnPlayPause = document.querySelector("#btn-play-pause");
+      const rangeVolume = document.querySelector("#volume-range");
+      const videocat = document.querySelector("#videocat");
+      const videodog = document.querySelector("#videodog");
+
+      videocat.play();
+      videodog.play();
+
+      btnPlayPause.addEventListener("click", function() {
+        if (videocat.paused) {
+          videocat.play();
+          videodog.play();
+          btnPlayPause.textContent = "Play";
+        } else {
+          videocat.pause();
+          videodog.pause();
+          btnPlayPause.textContent = "Pause";
+        }
+      });
+
+      rangeVolume.addEventListener("change", function() {
+        var value = rangeVolume.value / 100;
+        videocat.volume = value;
+        videodog.volume = value;
+      });
+
+      
+
+  </script>
+</html>
